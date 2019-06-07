@@ -15,9 +15,15 @@ if (config.use_env_variable) {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
-const models = ['USER', 'CONFERENCE_ROOM', 'RESERVATION'];
+const models = ['USER', 'MEET_ROOM', 'RESERVATION'];
 models.forEach(modelName =>{
   db[modelName]  = sequelize.import(path.join(__dirname, modelName.toLowerCase()+'.js'));
+});
+
+Object.keys(db).forEach(modelName => {
+  if(db[modelName].associate){
+    db[modelName].associate(db);
+  }
 });
 
 db.sequelize = sequelize;

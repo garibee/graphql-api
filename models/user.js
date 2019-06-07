@@ -1,5 +1,5 @@
-const UserModel = (sequelize, DataTypes) => {
-	const USER = sequelize.define('USER', {
+module.exports = (sequelize, DataTypes) => {
+	const user = sequelize.define('USER', {
 		user_id: {
 			type: DataTypes.INTEGER.UNSIGNED,
 			allowNull: false,
@@ -22,6 +22,10 @@ const UserModel = (sequelize, DataTypes) => {
 		underscored: true,
 		timestamps: false
 	});
-	return USER;
+
+	user.associate = (models)=>{
+		user.hasOne(models.RESERVATION, {foreignKey : "user_id", as : "user"});
+	}
+
+	return user;
 };
-module.exports = UserModel;

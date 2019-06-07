@@ -1,5 +1,5 @@
-const ConferenceRoomModel = (sequelize, DataTypes) => {
-	const CONFERENCE_ROOM = sequelize.define('CONFERENCE_ROOM', {
+module.exports = (sequelize, DataTypes) => {
+	const meet_room = sequelize.define('MEET_ROOM', {
 		room_id: {
 			type: DataTypes.INTEGER.UNSIGNED,
 			allowNull: false,
@@ -19,12 +19,15 @@ const ConferenceRoomModel = (sequelize, DataTypes) => {
 		}
 	},{
 		classMethods: {},
-		tableName: 'CONFERENCE_ROOM',
+		tableName: 'MEET_ROOM',
 		freezeTableName: true,
 		underscored: true,
 		timestamps: false
-    });
+	});
 
-	return CONFERENCE_ROOM;
+	meet_room.associate = (models)=>{
+		meet_room.hasOne(models.RESERVATION, {foreignKey : "room_id", as : "room"});
+	}
+
+	return meet_room;
 };
-module.exports = ConferenceRoomModel;

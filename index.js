@@ -1,12 +1,10 @@
 import { GraphQLServer } from "graphql-yoga";
+import resolvers from "./graphql/resolvers";
+import sequelize  from "./models/index";
+// sequelize.sequelize.sync();
 
-var sequelize = require('./models/index').sequelize;
-// console.log(sequelize);
-sequelize.sync();
-// import resolvers from "./graphql/resolvers";
-// import model from "./model/model.js";
-
-// const server = new GraphQLServer({
-//     typeDefs: "graphql/schema.graphql",
-// });
-// server.start(()=>console.log("graphQLServer started")) ;
+const server = new GraphQLServer({
+    typeDefs: "graphql/schema.graphql",
+    resolvers
+});
+server.start(()=>console.log("graphQLServer started")) ;

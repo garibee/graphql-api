@@ -1,14 +1,43 @@
- type Movie{
-        id : Int!
-        name:String!
-        score:Int!
- }
+type User{
+    user_id : Int!
+    name : String!
+    dept : String!
+}
 
- type Query{
-    movies: [Movie]!
-    movie(id: Int!): Movie
- }
+type MeetRoom {
+    room_id : Int!
+    name : String!
+    size : Int!
+}
+type Reservation {
+    user_id : Int!
+    room_id : Int!
+    start_at : String!
+    end_at : String!
+}
+
+type WeeklyReservationList{
+    user_id : Int!
+    room_id : Int!
+    start_at : String!
+    end_at : String!
+    user_data : User!
+    room_data : MeetRoom!
+}
+
+type Query{
+    user_list: [User]!
+    user(user_id:Int!):User
+    meet_room_list:[MeetRoom]!
+    meet_room(room_id:Int!):MeetRoom
+    weekly_reservation_list:[WeeklyReservationList]!
+}
 
 type Mutation{
-    addMovie(name: String!, score: Int!):Movie!
+    AddReservation(
+        user_id: Int!, 
+        room_id:Int!, 
+        start_at:String!, 
+        end_at:String!
+    ):Reservation
 }
