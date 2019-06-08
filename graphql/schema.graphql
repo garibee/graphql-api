@@ -21,8 +21,8 @@ type WeeklyReservationList{
     room_id : Int!
     start_at : String!
     end_at : String!
-    user_data : User!
-    room_data : MeetRoom!
+    user : User!
+    meet_room : MeetRoom!
 }
 
 type Query{

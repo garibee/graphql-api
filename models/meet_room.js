@@ -1,9 +1,8 @@
 module.exports = (sequelize, DataTypes) => {
-	const meet_room = sequelize.define('MEET_ROOM', {
+	const meet_room = sequelize.define('meet_room', {
 		room_id: {
 			type: DataTypes.INTEGER.UNSIGNED,
 			allowNull: false,
-			unique: true,
 			primaryKey:true,
 			autoIncrement:true
 		},
@@ -19,14 +18,17 @@ module.exports = (sequelize, DataTypes) => {
 		}
 	},{
 		classMethods: {},
-		tableName: 'MEET_ROOM',
+		tableName: 'meet_room',
 		freezeTableName: true,
 		underscored: true,
 		timestamps: false
 	});
 
 	meet_room.associate = (models)=>{
-		meet_room.hasOne(models.RESERVATION, {foreignKey : "room_id", as : "room"});
+		meet_room.hasMany(models.reservation, {
+			foreignKey : "room_id",
+			as : "meet_room",
+		});
 	}
 
 	return meet_room;

@@ -1,5 +1,5 @@
 import db from "../../models";
-const meet_room = db.MEET_ROOM;
+const meet_room = db.meet_room;
 
 export const getMeetRooms = async () => {
     const result = await meet_room.findAll();

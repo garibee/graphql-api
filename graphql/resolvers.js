@@ -9,7 +9,7 @@ const resolvers = {
         meet_room: (_, {room_id}) => getMeetRoomById(room_id),
         user_list: () => getUsers(),
         user: (_, {user_id}) => getUserById(user_id),
-        weekly_reservation_list : () => getWeeklyReservationList()
+        weekly_reservation_list: () => getWeeklyReservationList()
     },
     Mutation:{
         AddReservation:(_,{user_id, room_id, start_at, end_at}) => 

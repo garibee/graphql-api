@@ -15,9 +15,9 @@ if (config.use_env_variable) {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
-const models = ['USER', 'MEET_ROOM', 'RESERVATION'];
+const models = ['user', 'meet_room', 'reservation'];
 models.forEach(modelName =>{
-  db[modelName]  = sequelize.import(path.join(__dirname, modelName.toLowerCase()+'.js'));
+  db[modelName]  = sequelize.import(path.join(__dirname, modelName+'.js'));
 });
 
 Object.keys(db).forEach(modelName => {

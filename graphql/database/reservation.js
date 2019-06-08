@@ -1,10 +1,9 @@
 import moment from "moment";
 import db from "../../models";
-const Sequelize = db.Sequelize;
 const Op = db.Sequelize.Op;
-const reservation = db.RESERVATION;
-const meet_room = db.MEET_ROOM;
-const user = db.USER;
+const reservation = db.reservation;
+const meet_room = db.meet_room;
+const user = db.user;
 
 export const getReservation = async () => {
     const result = await reservation.findAll();
@@ -12,18 +11,16 @@ export const getReservation = async () => {
 }
 
 const isOccupiedRoom = async (room_id, start_at, end_at) =>{
-    const param = {
-        room_id : room_id,
-        start_at : {
-            [Op.gte]: start_at
-        },
-        end_at : {
-            [Op.lte] : end_at
-        }
-    };
-
     const result = await reservation.count({
-        where:param
+        where:{
+            room_id : room_id,
+            start_at : {
+                [Op.gte]: start_at
+            },
+            end_at : {
+                [Op.lte] : end_at
+            }
+        }
     });
 
     if(result > 0){
@@ -38,14 +35,13 @@ export const AddReservation = async (user_id, room_id, start_at, end_at) => {
     if(isOccupied == false ){
         throw new Error("해당 시간 예약이 이미 마감되었습니다.");
     }
-    const param = {
+    
+    const result = await reservation.create({
         user_id : user_id,
         room_id : room_id,
         start_at : start_at,
         end_at : end_at
-    };
-    
-    const result = await reservation.create(param);
+    });
     
     return result;
 }
@@ -55,23 +51,14 @@ export const getWeeklyReservationList = async () => {
     const thisSunday = moment().day(7).format("YYYY-MM-DD 23:59:59");
     
     const result = await reservation.findAll({
-        distinct: true,
-        attributes:[
-            "user_id",
-            "room_id",
-            ["id","reservation_id"],
-            "start_at",
-            "end_at"
-        ],
-        include: [
-            {
+        include: [{
                 model:user,
-                as : "user",
-                required: true
+                as:"user",
+                required: true,
             },
             {
                 model:meet_room,
-                as : "room",
+                as:"meet_room",
                 required:true,
             },
         ],
@@ -84,6 +71,6 @@ export const getWeeklyReservationList = async () => {
             }
         }
     });
-
+    
     return result;
 }

@@ -1,9 +1,8 @@
 module.exports = (sequelize, DataTypes) => {
-	const user = sequelize.define('USER', {
+	const user = sequelize.define('user', {
 		user_id: {
 			type: DataTypes.INTEGER.UNSIGNED,
 			allowNull: false,
-			unique: true,
 			primaryKey:true,
 			autoIncrement:true
 		},
@@ -17,14 +16,17 @@ module.exports = (sequelize, DataTypes) => {
 		}
 	},{
 		classMethods: {},
-		tableName: 'USER',
+		tableName: 'user',
 		freezeTableName: true,
 		underscored: true,
 		timestamps: false
 	});
 
 	user.associate = (models)=>{
-		user.hasOne(models.RESERVATION, {foreignKey : "user_id", as : "user"});
+		user.hasMany(models.reservation, {
+			foreignKey : "user_id",
+			as:"user",
+		});
 	}
 
 	return user;

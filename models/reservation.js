@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-	const reservation = sequelize.define('RESERVATION', {
+	const reservation = sequelize.define('reservation', {
 		user_id: {
 			type: DataTypes.INTEGER.UNSIGNED,
 			allowNull: false,
@@ -20,20 +20,21 @@ module.exports = (sequelize, DataTypes) => {
 		}
 	},{
 		classMethods: {},
-		tableName: 'RESERVATION',
+		tableName: 'reservation',
 		freezeTableName: true,
 		underscored: true,
 		timestamps: false,
 	});
 	reservation.associate = (models)=>{
-		reservation.belongsTo(models.MEET_ROOM, {
+		reservation.belongsTo(models.meet_room, {
 			foreignKey : "room_id",
-			as : "room"
+			as : "meet_room",
 		});
-		reservation.belongsTo(models.USER, {
+		reservation.belongsTo(models.user, {
 			foreignKey : "user_id",
-			as : "user"
+			as : "user",
 		});
 	}
+
 	return reservation;
 };
