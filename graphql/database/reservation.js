@@ -53,12 +53,10 @@ export const getWeeklyReservationList = async () => {
     const result = await reservation.findAll({
         include: [{
                 model:user,
-                as:"user",
                 required: true,
             },
             {
                 model:meet_room,
-                as:"meet_room",
                 required:true,
             },
         ],

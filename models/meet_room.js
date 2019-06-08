@@ -25,9 +25,8 @@ module.exports = (sequelize, DataTypes) => {
 	});
 
 	meet_room.associate = (models)=>{
-		meet_room.hasMany(models.reservation, {
+		meet_room.hasOne(models.reservation, {
 			foreignKey : "room_id",
-			as : "meet_room",
 		});
 	}
 

@@ -11,11 +11,11 @@ module.exports = (sequelize, DataTypes) => {
 			references: {model: 'meet_room', key: 'room_id'}
 		},
 		start_at: {
-			type: 'TIMESTAMP',
+			type: DataTypes.DATE,
 			allowNull : false
 		},
 		end_at: {
-			type: 'TIMESTAMP',
+			type: DataTypes.DATE,
 			allowNull : false
 		}
 	},{
@@ -28,11 +28,9 @@ module.exports = (sequelize, DataTypes) => {
 	reservation.associate = (models)=>{
 		reservation.belongsTo(models.meet_room, {
 			foreignKey : "room_id",
-			as : "meet_room",
 		});
 		reservation.belongsTo(models.user, {
 			foreignKey : "user_id",
-			as : "user",
 		});
 	}
 

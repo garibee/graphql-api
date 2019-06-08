@@ -1,26 +1,19 @@
 type User{
     user_id : Int!
-    name : String!
-    dept : String!
+    name : String!  #사용자 명
+    dept : String!  #사용자 부서
 }
 
 type MeetRoom {
-    room_id : Int!
-    name : String!
-    size : Int!
+    room_id : Int!  
+    name : String!  #회의실 명
+    size : Int!     #회의실 크기
 }
 type Reservation {
-    user_id : Int!
-    room_id : Int!
-    start_at : String!
-    end_at : String!
-}
-
-type WeeklyReservationList{
-    user_id : Int!
-    room_id : Int!
-    start_at : String!
-    end_at : String!
+    user_id : Int!  #User테이블의 FK
+    room_id : Int!  #MeetRoom테이블의 FK
+    start_at : String!   #시작일자
+    end_at : String!     #종료일자
     user : User!
     meet_room : MeetRoom!
 }
@@ -30,7 +23,8 @@ type Query{
     user(user_id:Int!):User
     meet_room_list:[MeetRoom]!
     meet_room(room_id:Int!):MeetRoom
-    weekly_reservation_list:[WeeklyReservationList]!
+    weekly_reservation_list:[Reservation]!
+    useable_meet_room_list(start_at:String!):[MeetRoom]
 }
 
 type Mutation{

@@ -23,9 +23,8 @@ module.exports = (sequelize, DataTypes) => {
 	});
 
 	user.associate = (models)=>{
-		user.hasMany(models.reservation, {
+		user.hasOne(models.reservation, {
 			foreignKey : "user_id",
-			as:"user",
 		});
 	}
 
