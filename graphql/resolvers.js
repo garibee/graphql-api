@@ -1,7 +1,7 @@
 // import {getMovies, getById, addMovie, deleteMovie} from "./db";
-import { getMeetRooms, getMeetRoomById, getUseableMeetRoomList} from "./database/meet_room";
-import { getUsers, getUserById } from "./database/user";
-import { AddReservation, getWeeklyReservationList } from "./database/reservation";
+import { getMeetRooms, getMeetRoomById, getUseableMeetRoomList} from "./dao/meet_room";
+import { getUsers, getUserById } from "./dao/user";
+import { AddReservation, getWeeklyReservationList } from "./dao/reservation";
 
 const resolvers = {
     Query:{

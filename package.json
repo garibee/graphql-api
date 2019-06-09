@@ -4,7 +4,8 @@
   "description": "graphql-api for zigzag",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node index.js"
+    "start": "nodemon --exec babel-node index.js",
+    "test": "mocha --require babel-polyfill --require babel-register"
   },
   "author": "joseph",
   "license": "ISC",
@@ -17,5 +18,9 @@
     "moment": "^2.24.0",
     "mysql2": "^1.6.5",
     "sequelize": "^5.8.7"
+  },
+  "devDependencies": {
+    "babel-polyfill": "^6.26.0",
+    "mocha": "^6.1.4"
   }
 }

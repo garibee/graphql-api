@@ -1,19 +1,21 @@
 {
   "development": {
-    "username": "root",
-    "password": "0000",
-    "database": "graphql",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-    "timezone" : "+09:00"
+    "username" : "root",
+    "password" : "0000",
+    "database" : "graphql",
+    "host" : "127.0.0.1",
+    "dialect" : "mysql",
+    "timezone" : "+09:00",
+    "port" : "3306"
   },
   "test": {
-    "username": "root",
-    "password": "0000",
-    "database": "graphql",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-    "timezone" : "+09:00"
+    "username" : "root",
+    "password" : "0000",
+    "database" : "graphql",
+    "host" : "127.0.0.1",
+    "dialect" : "mysql",
+    "timezone" : "+09:00",
+    "port" : "3306"
   },
   "production": {
     "username": "root",
@@ -21,6 +23,7 @@
     "database": "graphql",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "timezone" : "+09:00"
+    "timezone" : "+09:00",
+    "port" : "3306"
   }
 }
