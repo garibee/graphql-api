@@ -1,5 +1,7 @@
+const TABLE_NAME = global.IS_TEST==true?"meet_room_test":"meet_room";
+
 module.exports = (sequelize, DataTypes) => {
-	const meet_room = sequelize.define('meet_room', {
+	const meet_room = sequelize.define(TABLE_NAME, {
 		room_id: {
 			type: DataTypes.INTEGER.UNSIGNED,
 			allowNull: false,
@@ -18,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
 		}
 	},{
 		classMethods: {},
-		tableName: 'meet_room',
+		tableName: TABLE_NAME,
 		freezeTableName: true,
 		underscored: true,
 		timestamps: false

@@ -33,7 +33,7 @@ export const getUseableMeetRoomList = async (start_at) =>{
                 }
             ],
             where:{
-                '$reservation.room_id$':null
+                'room_id':null
             }
         });
     return result;

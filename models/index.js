@@ -1,4 +1,5 @@
 'use strict';
+global.IS_TEST = process.argv[6] =="--development"?true:false;
 
 const fs = require('fs');
 const path = require('path');
@@ -8,6 +9,7 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 
+// test option added
 let sequelize;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
