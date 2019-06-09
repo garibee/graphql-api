@@ -1,5 +1,3 @@
-import mysql  from "mysql2";
-import dbConn  from "../config/config.json";
 import { getWeeklyReservationList, AddReservation } from "../graphql/dao/reservation";
 import { getUseableMeetRoomList } from "../graphql/dao/meet_room";
 
