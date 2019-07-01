@@ -10,7 +10,7 @@ sequelize.sequelize.sync({force:false})
     sequelize.sequelize.query("insert into `meet_room` (`room_id`, `name`, `size`) values('4','대회의실','8')");
     sequelize.sequelize.query("insert into `meet_room` (`room_id`, `name`, `size`) values('5','LIBERTY실','6')");
 
-    sequelize.sequelize.query("insert into `user` (`user_id`, `name`, `dept`) values('1','김요셉','개발부서')");
+    sequelize.sequelize.query("insert into `user` (`user_id`, `name`, `dept`) values('1','JosephKim','개발부서')");
     sequelize.sequelize.query("insert into `user` (`user_id`, `name`, `dept`) values('2','김선달','사업기획부서')");
     sequelize.sequelize.query("insert into `user` (`user_id`, `name`, `dept`) values('3','홍길동','마케팅')");
     sequelize.sequelize.query("insert into `user` (`user_id`, `name`, `dept`) values('4','이순신','전략사업부')");
